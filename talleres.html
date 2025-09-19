@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
+    <title>Talleres - Control de Talleres de Costura</title>
+</head>
+<body>
+    <!-- Barra de navegación móvil -->
+    <nav class="mobile-nav">
+        <div class="nav-header">
+            <h2>🧵 Talleres de Costura</h2>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>🧵 Panel de Control</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon">📊</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="talleres.html" class="nav-link">
+                        <span class="nav-icon">🧵</span>
+                        Talleres
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="proveedores.html" class="nav-link">
+                        <span class="nav-icon">🏪</span>
+                        Proveedores
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="servicios.html" class="nav-link">
+                        <span class="nav-icon">✂️</span>
+                        Servicios
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <span class="user-name">Administrador</span>
+                    <span class="user-role">Admin</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <span class="nav-icon">🚪</span>
+                Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Talleres</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addTallerBtn">
+                        <span>+</span>
+                        Nuevo Taller
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filtros y búsqueda -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar talleres..." class="search-input">
+                    <button class="search-btn" id="searchBtn">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <select class="filter-select" id="statusFilter">
+                        <option value="all">Todos los estados</option>
+                        <option value="active">Activos</option>
+                        <option value="inactive">Inactivos</option>
+                    </select>
+                    <select class="filter-select" id="specialtyFilter">
+                        <option value="all">Todas las especialidades</option>
+                        <option value="moda-femenina">Moda Femenina</option>
+                        <option value="sastreria">Sastrería</option>
+                        <option value="reparaciones">Reparaciones</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de talleres -->
+        <section class="content-section">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Especialidad</th>
+                            <th>Ubicación</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="talleresTableBody">
+                        <tr>
+                            <td>Taller de Moda Femenina</td>
+                            <td>Vestidos y Blusas</td>
+                            <td>Centro</td>
+                            <td><span class="status-badge active">Activo</span></td>
+                            <td>
+                                <button class="btn-action edit" title="Editar">✏️</button>
+                                <button class="btn-action view" title="Ver detalles">👁️</button>
+                                <button class="btn-action delete" title="Eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Taller de Sastrería</td>
+                            <td>Trajes y Camisas</td>
+                            <td>Norte</td>
+                            <td><span class="status-badge active">Activo</span></td>
+                            <td>
+                                <button class="btn-action edit" title="Editar">✏️</button>
+                                <button class="btn-action view" title="Ver detalles">👁️</button>
+                                <button class="btn-action delete" title="Eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Taller de Reparaciones</td>
+                            <td>Arreglos y Ajustes</td>
+                            <td>Sur</td>
+                            <td><span class="status-badge inactive">Inactivo</span></td>
+                            <td>
+                                <button class="btn-action edit" title="Editar">✏️</button>
+                                <button class="btn-action view" title="Ver detalles">👁️</button>
+                                <button class="btn-action delete" title="Eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay para móvil -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="public/js/common.js"></script>
+    <script src="public/js/talleres.js"></script>
+</body>
+</html>
